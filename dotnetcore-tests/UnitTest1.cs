@@ -1,37 +1,23 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using dotnetcore_sample.Controllers; 
+using dotnetcore_sample;
+using NUnit.Framework;
+using dotnetcore;
 
 namespace dotnetcore_tests
 {
-    [TestClass]
-    public class UnitTest1
+    [TestFixture]
+    public class LoginTestCls
     {
-        [TestMethod]
-        public void About()
+        [TestCase]
+        public void Autenticacion_de_usuario_correcta()
         {
-          // Arrange
-          HomeController controller = new HomeController();
+            var login = new LoginCls();
 
-          // Act
-          ViewResult result = controller.About() as ViewResult;
+            NUnit.Framework.Assert.AreEqual("Autenticacion de usuario correcta.", login.autenticacionDeUsuarios("uswe", "Pass1258/*"));
 
-          // Assert
-          Assert.AreEqual("Your application description page.", result.ViewData["Message"]);
         }
 
-        [TestMethod]
-        public void Contact()
-        {
-          // Arrange
-          HomeController controller = new HomeController();
-
-          // Act
-          ViewResult result = controller.Contact() as ViewResult;
-
-          // Assert
-          Assert.AreEqual("Your contact page.", result.ViewData["Message"]);
-        }
     }
 }
